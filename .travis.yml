@@ -11,12 +11,8 @@ before_install:
   - sudo cp ./src/test/resources/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
   - sudo cat /etc/elasticsearch/elasticsearch.yml
   - sudo java -version
-  - sudo -i service elasticsearch start
+  - sudo -i service elasticsearch start || ls /var/log/elasticsearch/
   - sleep 30
-
-install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true
 
 script:
   - ulimit -a
-  - mvn test
